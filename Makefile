@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/06 03:07:42 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/10 00:25:48 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ MLX_DIR = mlx_linux
 MLX = mlx_linux/libmlx.a
 
 SRC_DIR = srcs
-SRC = $(SRC_DIR)/main.c
+SRC = $(SRC_DIR)/main.c \
+		$(SRC_DIR)/start_game.c \
+		$(SRC_DIR)/load_img.c
 
 INCLUDE_DIR = includes
 INCLUDE = includes/so_long.h

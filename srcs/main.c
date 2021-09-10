@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 03:01:55 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/09 22:57:43 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/10 00:18:16 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	main(void)
 {
-	return (0);
+	t_game	game;
+
+	start_game(&game);
 }
