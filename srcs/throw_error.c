@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   throw_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 03:01:55 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 02:27:45 by rfelipe-         ###   ########.fr       */
+/*   Created: 2021/09/11 02:29:01 by rfelipe-          #+#    #+#             */
+/*   Updated: 2021/09/11 03:27:44 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char *argv[])
+void	throw_error(t_game *game, char *e)
 {
-	t_game	game;
-
-	start_game(&game, argc, argv);
+	printf("Error\n%s\n", e);
+	game->close_game = 1;
 }

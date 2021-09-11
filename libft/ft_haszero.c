@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_haszero.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 03:01:55 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 02:27:45 by rfelipe-         ###   ########.fr       */
+/*   Created: 2021/09/11 05:11:14 by rfelipe-          #+#    #+#             */
+/*   Updated: 2021/09/11 05:17:25 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_haszero(int *s, int size)
 {
-	t_game	game;
-
-	start_game(&game, argc, argv);
+	while (size > 0)
+	{
+		if (s[size - 1] == 0)
+			return (1);
+		size--;
+	}
+	return (0);
 }
