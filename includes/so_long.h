@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 04:19:30 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/11 05:32:55 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	start_game(t_game *game, int argc, char *argv[]);
 void	throw_error(t_game *game, char *e);
 void	check_params(t_game *game, int argc, char *argv[]);
 void	check_map(t_game *game, char *map);
+void	put_images(t_game *game, char *map);
 
 #endif
