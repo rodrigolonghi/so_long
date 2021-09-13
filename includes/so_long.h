@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 02:18:53 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 04:35:27 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_map
 {
 	int		cols;
 	int		rows;
+	char	**coordinates;
 }	t_map;
 
 typedef struct s_sprite
@@ -67,7 +68,8 @@ void	start_game(t_game *game, int argc, char *argv[]);
 void	throw_error(t_game *game, char *e);
 void	check_params(t_game *game, int argc, char *argv[]);
 void	check_map(t_game *game, char *map);
-void	put_images(t_game *game, char *map);
+int		put_images(t_game *game);
 int		move_hook(int key, void *param);
+void	insert_image(t_game *game, int rows, int cols, char img_code);
 
 #endif

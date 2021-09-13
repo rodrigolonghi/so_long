@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 02:11:58 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 04:31:57 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,25 @@ void static	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
 	}
 	else
 		throw_error(game, "Invalid character on map");
-	game->to_collect = characters[2];
 }
 
-void static	check_map_characters(t_game *game, char *map, int *characters)
+void static	check_map_characters(t_game *game, int *characters)
 {
-	int		fd;
 	int		*rows_n_cols;
-	char	*aux;
 
 	rows_n_cols = ft_calloc(2, sizeof(int));
-	fd = open(ft_strjoin("./maps/", map), O_RDWR);
-	while (rows_n_cols[0] < game->map.rows && get_next_line(fd, &aux))
+	while (rows_n_cols[0] < game->map.rows && game->close_game == 0)
 	{
 		rows_n_cols[1] = 0;
-		while (rows_n_cols[1] < game->map.cols && game->close_game == 0)
+		while (rows_n_cols[1] < game->map.cols)
 		{
-			check_map_characters2(aux, rows_n_cols, characters, game);
+			check_map_characters2(game->map.coordinates[rows_n_cols[0]],
+				rows_n_cols, characters, game);
 			rows_n_cols[1]++;
 		}
 		rows_n_cols[0]++;
 	}
-	free(aux);
 	free(rows_n_cols);
-	close(fd);
 }
 
 void static	check_map_walls(t_game *game, char *map)
@@ -62,19 +57,18 @@ void static	check_map_walls(t_game *game, char *map)
 	int		fd;
 	int		rows;
 	int		cols;
-	char	*aux;
 
 	rows = 0;
 	fd = open(ft_strjoin("./maps/", map), O_RDWR);
 	while (rows < game->map.rows && game->close_game == 0)
 	{
-		get_next_line(fd, &aux);
+		get_next_line(fd, &game->map.coordinates[rows]);
 		cols = 0;
 		while (cols < game->map.cols && game->close_game == 0)
 		{
 			if ((cols == 0 || cols == game->map.cols - 1
 					|| rows == 0 || rows == game->map.rows - 1)
-				&& aux[cols] != '1')
+				&& game->map.coordinates[rows][cols] != '1')
 				throw_error(game, "Map must be closed/surrounded by walls");
 			cols++;
 		}
@@ -91,7 +85,7 @@ void static	count_map_size(t_game *game, char *map)
 	game->map.rows = 0;
 	game->map.cols = -1;
 	fd = open(ft_strjoin("./maps/", map), O_RDWR);
-	while (get_next_line(fd, &aux) == 1)
+	while (get_next_line(fd, &aux) == 1 && game->close_game == 0)
 	{
 		if (game->map.cols == -1)
 			game->map.cols = ft_strlen(aux);
@@ -117,14 +111,18 @@ void	check_map(t_game *game, char *map)
 	int	*characters;
 
 	characters = ft_calloc(5, sizeof(int));
-	if (game->close_game == 0)
-		count_map_size(game, map);
+	count_map_size(game, map);
+	game->map.coordinates = malloc(sizeof(char *) * game->map.rows);
 	check_map_walls(game, map);
-	check_map_characters(game, map, characters);
-	if (game->close_game == 0 && ft_haszero(characters, 5))
-		throw_error(game, ft_strjoin("Map must have at least one exit, one",
-				" collectible and one starting position."));
-	if (characters[4] > 1)
-		throw_error(game, "You put more than one player in the map.");
+	check_map_characters(game, characters);
+	if (game->close_game == 0)
+	{
+		if (ft_haszero(characters, 4) == 1)
+			throw_error(game, ft_strjoin("Map must have at least one exit, one",
+					" collectible and one starting position."));
+		if (characters[4] != 1)
+			throw_error(game, "You need to put exactly one player on the map");
+	}
+	game->to_collect = characters[2];
 	free(characters);
 }

@@ -6,51 +6,48 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 05:30:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 02:19:41 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 04:35:23 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	put_images2(char *aux, int cols, int rows, t_game *game)
+void	insert_image(t_game *game, int rows, int cols, char img_code)
 {
-	if (aux[cols] == '1')
+	if (img_code == '0')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->empty.img, 50 * cols, 50 * rows);
+	else if (img_code == '1')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->wall.img, 50 * cols, 50 * rows);
-	else if (aux[cols] == 'C')
+	else if (img_code == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->collect.img, 50 * cols, 50 * rows);
-	else if (aux[cols] == 'E')
+	else if (img_code == 'E')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->exit.img, 50 * cols, 50 * rows);
-	else if (aux[cols] == 'P')
+	else if (img_code == 'P')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->player.img, 50 * cols, 50 * rows);
 	else
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->empty.img, 50 * cols, 50 * rows);
+		throw_error(game, "Invalid character provided");
 }
 
-void	put_images(t_game *game, char *map)
+int	put_images(t_game *game)
 {
-	int		fd;
-	int		rows;
-	int		cols;
-	char	*aux;
+	int	rows;
+	int	cols;
 
 	rows = 0;
-	fd = open(ft_strjoin("./maps/", map), O_RDWR);
 	while (rows < game->map.rows)
 	{
 		cols = 0;
-		get_next_line(fd, &aux);
-		while (cols < game->map.cols && game->close_game == 0)
+		while (cols < game->map.cols)
 		{
-			put_images2(aux, cols, rows, game);
+			insert_image(game, rows, cols, game->map.coordinates[rows][cols]);
 			cols++;
 		}
 		rows++;
 	}
-	free(aux);
-	close(fd);
+	return (0);
 }
