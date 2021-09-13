@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   throw_error.c                                      :+:      :+:    :+:   */
+/*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 02:29:01 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 16:58:17 by rfelipe-         ###   ########.fr       */
+/*   Created: 2021/09/11 04:18:40 by rfelipe-          #+#    #+#             */
+/*   Updated: 2021/09/13 18:34:24 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	throw_error(t_game *game, char *e)
+void	check_params(int argc, char *argv[])
 {
-	printf("Error\n%s\n", e);
-	exit(0);
+	int	fd;
+
+	if (argc == 2)
+	{
+		if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 4) != 0)
+			throw_error("You must enter a '.ber' file");
+	}
+	else
+		throw_error("Invalid numbers of arguments");
+	fd = open(ft_strjoin("./maps/", argv[1]), O_RDWR);
+	if (fd < 0)
+		throw_error("A valid file was not found");
+	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:10:49 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:32:28 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void static	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
 		characters[4]++;
 	}
 	else
-		throw_error(game, "Invalid character on map");
+		throw_error("Invalid character on map");
 }
 
 void static	check_map_characters(t_game *game, int *characters)
@@ -69,7 +69,7 @@ void static	check_map_walls(t_game *game, char *map)
 			if ((cols == 0 || cols == game->map.cols - 1
 					|| rows == 0 || rows == game->map.rows - 1)
 				&& game->map.coordinates[rows][cols] != '1')
-				throw_error(game, "Map must be closed/surrounded by walls");
+				throw_error("Map must be closed/surrounded by walls");
 			cols++;
 		}
 		rows++;
@@ -99,7 +99,7 @@ void static	count_map_size(t_game *game, char *map)
 	if (game->map.cols != (int) ft_strlen(aux) && game->map.cols != -1)
 		game->map.cols = -1;
 	if (game->map.cols <= 0 || game->map.rows <= 0)
-		throw_error(game, "Map must be rectangular");
+		throw_error("Map must be rectangular");
 	game->map.rows++;
 	if (aux != NULL)
 		free(aux);
@@ -116,10 +116,10 @@ void	check_map(t_game *game, char *map)
 	check_map_walls(game, map);
 	check_map_characters(game, characters);
 	if (ft_haszero(characters, 4) == 1)
-		throw_error(game, ft_strjoin("Map must have at least one exit, one",
+		throw_error(ft_strjoin("Map must have at least one exit, one",
 				" collectible and one starting position."));
 	if (characters[4] != 1)
-		throw_error(game, "You need to put exactly one player on the map");
+		throw_error("You need to put exactly one player on the map");
 	game->to_collect = characters[2];
 	free(characters);
 }

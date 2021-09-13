@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:59:05 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 18:15:58 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:34:40 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void static	start_win(t_game *game)
 
 void	start_game(t_game *game, int argc, char *argv[])
 {
-	check_params(game, argc, argv);
+	check_params(argc, argv);
 	check_map(game, argv[1]);
 	start_win(game);
 	mlx_key_hook(game->win, key_hook, game);

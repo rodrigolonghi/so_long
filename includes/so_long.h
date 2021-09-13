@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:42:38 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:34:30 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_game
 
 void	load_image(t_game *game);
 void	start_game(t_game *game, int argc, char *argv[]);
-void	throw_error(t_game *game, char *e);
-void	check_params(t_game *game, int argc, char *argv[]);
+void	throw_error(char *e);
+void	check_params(int argc, char *argv[]);
 void	check_map(t_game *game, char *map);
 int		put_images(t_game *game);
 int		key_hook(int key, void *param);

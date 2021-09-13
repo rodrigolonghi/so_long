@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:40:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 18:21:48 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:25:33 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	check_movement(t_game *game, int x, int y)
 	if (game->map.coordinates[x][y] == '0'
 		|| game->map.coordinates[x][y] == 'P')
 		return (1);
-	else if (game->map.coordinates[x][y] == '1')
-		return (0);
 	else if (game->map.coordinates[x][y] == 'C')
 	{
 		game->to_collect--;
@@ -36,7 +34,6 @@ int	check_movement(t_game *game, int x, int y)
 		}
 		printf("You need to collect %d more gems before leaving!\n",
 			game->to_collect);
-		return (0);
 	}
 	return (0);
 }
