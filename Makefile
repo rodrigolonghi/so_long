@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/13 02:40:43 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/13 16:01:26 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/check_params.c \
 		$(SRC_DIR)/check_map.c \
 		$(SRC_DIR)/put_images.c \
-		$(SRC_DIR)/move_hook.c
+		$(SRC_DIR)/key_hook.c \
+		$(SRC_DIR)/close_game.c
 
 INCLUDE_DIR = includes
 INCLUDE = includes/so_long.h

@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 04:35:27 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 17:37:18 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define ESC 0xff1b
-# define RIGHT 0x64
-# define LEFT 0x61
-# define UP 0x77
-# define DOWN 0x73
+# define LEFT			0x61
+# define RIGHT			0x64
+# define DOWN			0x73
+# define UP				0x77
+# define ARROW_LEFT		0xff51
+# define ARROW_UP		0xff52
+# define ARROW_RIGHT	0xff53
+# define ARROW_DOWN		0xff54
+# define ESC			0xff1b
 
 typedef struct s_pos
 {
@@ -60,7 +64,6 @@ typedef struct s_game
 	t_pos		player_pos;
 	int			to_collect;
 	int			steps;
-	int			close_game;
 }	t_game;
 
 void	load_image(t_game *game);
@@ -69,7 +72,8 @@ void	throw_error(t_game *game, char *e);
 void	check_params(t_game *game, int argc, char *argv[]);
 void	check_map(t_game *game, char *map);
 int		put_images(t_game *game);
-int		move_hook(int key, void *param);
+int		key_hook(int key, void *param);
 void	insert_image(t_game *game, int rows, int cols, char img_code);
+int		close_game(t_game *game);
 
 #endif

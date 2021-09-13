@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 04:31:57 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 17:10:49 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void static	check_map_characters(t_game *game, int *characters)
 	int		*rows_n_cols;
 
 	rows_n_cols = ft_calloc(2, sizeof(int));
-	while (rows_n_cols[0] < game->map.rows && game->close_game == 0)
+	while (rows_n_cols[0] < game->map.rows)
 	{
 		rows_n_cols[1] = 0;
 		while (rows_n_cols[1] < game->map.cols)
@@ -60,11 +60,11 @@ void static	check_map_walls(t_game *game, char *map)
 
 	rows = 0;
 	fd = open(ft_strjoin("./maps/", map), O_RDWR);
-	while (rows < game->map.rows && game->close_game == 0)
+	while (rows < game->map.rows)
 	{
 		get_next_line(fd, &game->map.coordinates[rows]);
 		cols = 0;
-		while (cols < game->map.cols && game->close_game == 0)
+		while (cols < game->map.cols)
 		{
 			if ((cols == 0 || cols == game->map.cols - 1
 					|| rows == 0 || rows == game->map.rows - 1)
@@ -85,10 +85,10 @@ void static	count_map_size(t_game *game, char *map)
 	game->map.rows = 0;
 	game->map.cols = -1;
 	fd = open(ft_strjoin("./maps/", map), O_RDWR);
-	while (get_next_line(fd, &aux) == 1 && game->close_game == 0)
+	while (get_next_line(fd, &aux) == 1)
 	{
 		if (game->map.cols == -1)
-			game->map.cols = ft_strlen(aux);
+			game->map.cols = (int) ft_strlen(aux);
 		else if (game->map.cols != (int) ft_strlen(aux))
 		{
 			game->map.cols = -1;
@@ -96,9 +96,9 @@ void static	count_map_size(t_game *game, char *map)
 		}
 		game->map.rows++;
 	}
-	if (game->map.cols != (int) ft_strlen(aux))
+	if (game->map.cols != (int) ft_strlen(aux) && game->map.cols != -1)
 		game->map.cols = -1;
-	if (game->map.cols <= 0 && game->map.rows <= 0)
+	if (game->map.cols <= 0 || game->map.rows <= 0)
 		throw_error(game, "Map must be rectangular");
 	game->map.rows++;
 	if (aux != NULL)
@@ -115,14 +115,11 @@ void	check_map(t_game *game, char *map)
 	game->map.coordinates = malloc(sizeof(char *) * game->map.rows);
 	check_map_walls(game, map);
 	check_map_characters(game, characters);
-	if (game->close_game == 0)
-	{
-		if (ft_haszero(characters, 4) == 1)
-			throw_error(game, ft_strjoin("Map must have at least one exit, one",
-					" collectible and one starting position."));
-		if (characters[4] != 1)
-			throw_error(game, "You need to put exactly one player on the map");
-	}
+	if (ft_haszero(characters, 4) == 1)
+		throw_error(game, ft_strjoin("Map must have at least one exit, one",
+				" collectible and one starting position."));
+	if (characters[4] != 1)
+		throw_error(game, "You need to put exactly one player on the map");
 	game->to_collect = characters[2];
 	free(characters);
 }
