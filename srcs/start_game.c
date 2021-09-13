@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:59:05 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 16:58:33 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:15:58 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void static	start_win(t_game *game)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->map.cols * 50,
 			game->map.rows * 50, "so_long");
+	game->steps = 0;
 	load_image(game);
 	put_images(game);
 }
@@ -31,5 +32,6 @@ void	start_game(t_game *game, int argc, char *argv[])
 	mlx_loop(game->mlx);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
+	close_game(game);
 	free(game->mlx);
 }

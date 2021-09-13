@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:37:18 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 17:42:38 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int		put_images(t_game *game);
 int		key_hook(int key, void *param);
 void	insert_image(t_game *game, int rows, int cols, char img_code);
 int		close_game(t_game *game);
+int		check_movement(t_game *game, int x, int y);
 
 #endif

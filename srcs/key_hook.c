@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 00:57:16 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:36:02 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 17:58:44 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,50 @@
 
 void static	go_right(t_game *game)
 {
-	insert_image(game, game->player_pos.x, game->player_pos.y, '0');
-	insert_image(game, game->player_pos.x, game->player_pos.y + 1, 'P');
-	game->player_pos.y++;
+	if (check_movement(game, 0, 1))
+	{
+		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
+		insert_image(game, game->player_pos.x, game->player_pos.y + 1, 'P');
+		game->player_pos.y++;
+		game->steps++;
+		printf("%d\n", game->steps);
+	}
 }
 
 void static	go_left(t_game *game)
 {
-	insert_image(game, game->player_pos.x, game->player_pos.y, '0');
-	insert_image(game, game->player_pos.x, game->player_pos.y - 1, 'P');
-	game->player_pos.y--;
+	if (check_movement(game, 0, -1))
+	{
+		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
+		insert_image(game, game->player_pos.x, game->player_pos.y - 1, 'P');
+		game->player_pos.y--;
+		game->steps++;
+		printf("%d\n", game->steps);
+	}
 }
 
 void static	go_down(t_game *game)
 {
-	insert_image(game, game->player_pos.x, game->player_pos.y, '0');
-	insert_image(game, game->player_pos.x + 1, game->player_pos.y, 'P');
-	game->player_pos.x++;
+	if (check_movement(game, 1, 0))
+	{
+		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
+		insert_image(game, game->player_pos.x + 1, game->player_pos.y, 'P');
+		game->player_pos.x++;
+		game->steps++;
+		printf("%d\n", game->steps);
+	}
 }
 
 void static	go_up(t_game *game)
 {
-	insert_image(game, game->player_pos.x, game->player_pos.y, '0');
-	insert_image(game, game->player_pos.x - 1, game->player_pos.y, 'P');
-	game->player_pos.x--;
+	if (check_movement(game, -1, 0))
+	{
+		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
+		insert_image(game, game->player_pos.x - 1, game->player_pos.y, 'P');
+		game->player_pos.x--;
+		game->steps++;
+		printf("%d\n", game->steps);
+	}
 }
 
 int	key_hook(int key, void *param)
