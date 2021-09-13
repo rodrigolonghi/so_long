@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 05:32:55 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 02:18:53 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
+
+# define ESC 0xff1b
+# define RIGHT 0x64
+# define LEFT 0x61
+# define UP 0x77
+# define DOWN 0x73
 
 typedef struct s_pos
 {
@@ -27,16 +33,7 @@ typedef struct s_map
 {
 	int		cols;
 	int		rows;
-	char	**arr;
-
 }	t_map;
-
-typedef struct s_window
-{
-	void	*ref;
-	int		x;
-	int		y;
-}	t_window;
 
 typedef struct s_sprite
 {
@@ -52,7 +49,7 @@ typedef struct s_sprite
 typedef struct s_game
 {
 	void		*mlx;
-	t_window	win;
+	void		*win;
 	t_sprite	player;
 	t_sprite	collect;
 	t_sprite	wall;
@@ -71,5 +68,6 @@ void	throw_error(t_game *game, char *e);
 void	check_params(t_game *game, int argc, char *argv[]);
 void	check_map(t_game *game, char *map);
 void	put_images(t_game *game, char *map);
+int		move_hook(int key, void *param);
 
 #endif

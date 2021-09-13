@@ -6,56 +6,54 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 05:17:00 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 02:11:58 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	check_map_characters2(char *aux, int cols, int *characters,
+void static	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
 	t_game *game)
 {
-	if (aux[cols] == '0')
+	if (aux[rows_n_cols[1]] == '0')
 		characters[0]++;
-	else if (aux[cols] == '1')
+	else if (aux[rows_n_cols[1]] == '1')
 		characters[1]++;
-	else if (aux[cols] == 'C')
+	else if (aux[rows_n_cols[1]] == 'C')
 		characters[2]++;
-	else if (aux[cols] == 'E')
+	else if (aux[rows_n_cols[1]] == 'E')
 		characters[3]++;
-	else if (aux[cols] == 'P')
+	else if (aux[rows_n_cols[1]] == 'P')
+	{
+		game->player_pos.x = rows_n_cols[0];
+		game->player_pos.y = rows_n_cols[1];
 		characters[4]++;
+	}
 	else
 		throw_error(game, "Invalid character on map");
 	game->to_collect = characters[2];
 }
 
-void static	check_map_characters(t_game *game, char *map)
+void static	check_map_characters(t_game *game, char *map, int *characters)
 {
 	int		fd;
-	int		rows;
-	int		cols;
-	int		*characters;
+	int		*rows_n_cols;
 	char	*aux;
 
-	rows = 0;
-	characters = ft_calloc(5, sizeof(int));
+	rows_n_cols = ft_calloc(2, sizeof(int));
 	fd = open(ft_strjoin("./maps/", map), O_RDWR);
-	while (rows < game->map.rows && get_next_line(fd, &aux))
+	while (rows_n_cols[0] < game->map.rows && get_next_line(fd, &aux))
 	{
-		cols = 0;
-		while (cols < game->map.cols && game->close_game == 0)
+		rows_n_cols[1] = 0;
+		while (rows_n_cols[1] < game->map.cols && game->close_game == 0)
 		{
-			check_map_characters2(aux, cols, characters, game);
-			cols++;
+			check_map_characters2(aux, rows_n_cols, characters, game);
+			rows_n_cols[1]++;
 		}
-		rows++;
+		rows_n_cols[0]++;
 	}
-	if (game->close_game == 0 && ft_haszero(characters, 5))
-		throw_error(game, ft_strjoin("Map must have at least one exit, one",
-				" collectible and one starting position."));
 	free(aux);
-	free(characters);
+	free(rows_n_cols);
 	close(fd);
 }
 
@@ -116,8 +114,17 @@ void static	count_map_size(t_game *game, char *map)
 
 void	check_map(t_game *game, char *map)
 {
+	int	*characters;
+
+	characters = ft_calloc(5, sizeof(int));
 	if (game->close_game == 0)
 		count_map_size(game, map);
 	check_map_walls(game, map);
-	check_map_characters(game, map);
+	check_map_characters(game, map, characters);
+	if (game->close_game == 0 && ft_haszero(characters, 5))
+		throw_error(game, ft_strjoin("Map must have at least one exit, one",
+				" collectible and one starting position."));
+	if (characters[4] > 1)
+		throw_error(game, "You put more than one player in the map.");
+	free(characters);
 }

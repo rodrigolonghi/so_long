@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/11 05:31:05 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/13 01:01:13 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/throw_error.c \
 		$(SRC_DIR)/check_params.c \
 		$(SRC_DIR)/check_map.c \
-		$(SRC_DIR)/put_images.c
+		$(SRC_DIR)/put_images.c \
+		$(SRC_DIR)/move_hook.c
 
 INCLUDE_DIR = includes
 INCLUDE = includes/so_long.h

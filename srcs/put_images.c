@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 05:30:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 05:41:10 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/13 02:19:41 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void static	put_images2(char *aux, int cols, int rows, t_game *game)
 {
 	if (aux[cols] == '1')
-		mlx_put_image_to_window(game->mlx, game->win.ref,
+		mlx_put_image_to_window(game->mlx, game->win,
 			game->wall.img, 50 * cols, 50 * rows);
 	else if (aux[cols] == 'C')
-		mlx_put_image_to_window(game->mlx, game->win.ref,
+		mlx_put_image_to_window(game->mlx, game->win,
 			game->collect.img, 50 * cols, 50 * rows);
 	else if (aux[cols] == 'E')
-		mlx_put_image_to_window(game->mlx, game->win.ref,
+		mlx_put_image_to_window(game->mlx, game->win,
 			game->exit.img, 50 * cols, 50 * rows);
 	else if (aux[cols] == 'P')
-		mlx_put_image_to_window(game->mlx, game->win.ref,
+		mlx_put_image_to_window(game->mlx, game->win,
 			game->player.img, 50 * cols, 50 * rows);
 	else
-		mlx_put_image_to_window(game->mlx, game->win.ref,
+		mlx_put_image_to_window(game->mlx, game->win,
 			game->empty.img, 50 * cols, 50 * rows);
 }
 
