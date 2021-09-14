@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 00:57:16 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:47:01 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 04:15:04 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void static	go_right(t_game *g)
 	if (check_movement_bonus(g, 0, 1))
 	{
 		insert_image_bonus(g, g->player_pos.x, g->player_pos.y, '0');
-		insert_image_bonus(g, g->player_pos.x, g->player_pos.y + 1, 'P');
+		walk_animation_bonus(g, g->player_pos.x, g->player_pos.y + 1, 'R');
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = '0';
 		g->player_pos.y++;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
@@ -31,7 +31,7 @@ void static	go_left(t_game *g)
 	if (check_movement_bonus(g, 0, -1))
 	{
 		insert_image_bonus(g, g->player_pos.x, g->player_pos.y, '0');
-		insert_image_bonus(g, g->player_pos.x, g->player_pos.y - 1, 'P');
+		walk_animation_bonus(g, g->player_pos.x, g->player_pos.y - 1, 'L');
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = '0';
 		g->player_pos.y--;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
@@ -45,7 +45,7 @@ void static	go_down(t_game *g)
 	if (check_movement_bonus(g, 1, 0))
 	{
 		insert_image_bonus(g, g->player_pos.x, g->player_pos.y, '0');
-		insert_image_bonus(g, g->player_pos.x + 1, g->player_pos.y, 'P');
+		walk_animation_bonus(g, g->player_pos.x + 1, g->player_pos.y, 'D');
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = '0';
 		g->player_pos.x++;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
@@ -59,7 +59,7 @@ void static	go_up(t_game *g)
 	if (check_movement_bonus(g, -1, 0))
 	{
 		insert_image_bonus(g, g->player_pos.x, g->player_pos.y, '0');
-		insert_image_bonus(g, g->player_pos.x - 1, g->player_pos.y, 'P');
+		walk_animation_bonus(g, g->player_pos.x - 1, g->player_pos.y, 'U');
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = '0';
 		g->player_pos.x--;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';

@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/14 02:56:45 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/14 04:23:39 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ BONUS_SRC = $(BONUS_SRC_DIR)/main_bonus.c \
 			$(BONUS_SRC_DIR)/put_images_bonus.c \
 			$(BONUS_SRC_DIR)/key_hook_bonus.c \
 			$(BONUS_SRC_DIR)/close_game_bonus.c \
-			$(BONUS_SRC_DIR)/check_movement_bonus.c
+			$(BONUS_SRC_DIR)/check_movement_bonus.c \
+			$(BONUS_SRC_DIR)/walk_animation_bonus.c
 
 INCLUDE_DIR = includes
 INCLUDE = $(INCLUDE_DIR)/so_long.h
@@ -92,6 +93,6 @@ fclean: clean
 
 re: fclean all
 
-bonus: fclean $(LIBFT) $(MLX) $(BONUS_OBJ)
+bonus: $(LIBFT) $(MLX) $(BONUS_OBJ)
 	mkdir -p $(APP_DIR)
-	$(CC) -lm $(BONUS_OBJ) $(LIBFT) -L$(MLX_DIR) $(MLX_FLAGS) -o $(APP_DIR)/$(NAME)
+	$(CC) -lm $(BONUS_OBJ) $(LIBFT) -L$(MLX_DIR) $(MLX_FLAGS) -o app/$(NAME)

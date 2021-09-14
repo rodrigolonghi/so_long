@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:25:21 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:39:27 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 03:47:10 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_sprite	player;
+	t_sprite	playerLeft;
+	t_sprite	playerRun1;
+	t_sprite	playerRun1Left;
+	t_sprite	playerRun2;
+	t_sprite	playerRun2Left;
 	t_sprite	collect;
 	t_sprite	wall;
 	t_sprite	empty;
@@ -65,6 +70,7 @@ typedef struct s_game
 	t_pos		player_pos;
 	int			to_collect;
 	int			steps;
+	char		look;
 }	t_game;
 
 void	start_game_bonus(t_game *game, int argc, char *argv[]);
@@ -79,5 +85,6 @@ int		close_game_bonus(t_game *game);
 int		check_movement_bonus(t_game *game, int x, int y);
 void	count_map_size_bonus(t_game *game, char *map);
 void	check_map_walls_bonus(t_game *game, char *map);
+void	walk_animation_bonus(t_game *g, int x, int y, char direction);
 
 #endif

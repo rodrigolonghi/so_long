@@ -6,11 +6,50 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:51:42 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:48:56 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 03:35:06 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void static	load_walk_animation2(t_game *g)
+{
+	g->playerRun2.img = mlx_xpm_file_to_image(g->mlx,
+			"img/character/run2.xpm", &g->playerRun2.width,
+			&g->playerRun2.height);
+	g->playerRun2.addr = mlx_get_data_addr(g->playerRun2.img,
+			&g->playerRun2.bpp, &g->playerRun2.line_length,
+			&g->playerRun2.endian);
+	g->playerRun2Left.img = mlx_xpm_file_to_image(g->mlx,
+			"img/character/run2Left.xpm", &g->playerRun2Left.width,
+			&g->playerRun2Left.height);
+	g->playerRun2Left.addr = mlx_get_data_addr(g->playerRun2Left.img,
+			&g->playerRun2Left.bpp, &g->playerRun2Left.line_length,
+			&g->playerRun2Left.endian);
+}
+
+void static	load_walk_animation(t_game *g)
+{
+	g->playerLeft.img = mlx_xpm_file_to_image(g->mlx,
+			"img/character/idleLeft.xpm", &g->playerLeft.width,
+			&g->playerLeft.height);
+	g->playerLeft.addr = mlx_get_data_addr(g->playerLeft.img,
+			&g->playerLeft.bpp, &g->playerLeft.line_length,
+			&g->playerLeft.endian);
+	g->playerRun1.img = mlx_xpm_file_to_image(g->mlx,
+			"img/character/run1.xpm", &g->playerRun1.width,
+			&g->playerRun1.height);
+	g->playerRun1.addr = mlx_get_data_addr(g->playerRun1.img,
+			&g->playerRun1.bpp, &g->playerRun1.line_length,
+			&g->playerRun1.endian);
+	g->playerRun1Left.img = mlx_xpm_file_to_image(g->mlx,
+			"img/character/run1Left.xpm", &g->playerRun1Left.width,
+			&g->playerRun1Left.height);
+	g->playerRun1Left.addr = mlx_get_data_addr(g->playerRun1Left.img,
+			&g->playerRun1Left.bpp, &g->playerRun1Left.line_length,
+			&g->playerRun1Left.endian);
+	load_walk_animation2(g);
+}
 
 void	load_image_bonus(t_game *g)
 {
@@ -38,4 +77,5 @@ void	load_image_bonus(t_game *g)
 			&g->opponent.width, &g->opponent.height);
 	g->opponent.addr = mlx_get_data_addr(g->opponent.img, &g->opponent.bpp,
 			&g->opponent.line_length, &g->opponent.endian);
+	load_walk_animation(g);
 }

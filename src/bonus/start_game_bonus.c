@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:31:45 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:50:04 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 03:37:22 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void static	start_win_bonus(t_game *game)
 	game->win = mlx_new_window(game->mlx, game->map.cols * 50,
 			game->map.rows * 50, "so_long");
 	game->steps = 0;
+	game->look = 'R';
 	load_image_bonus(game);
 	put_images_bonus(game);
 }
