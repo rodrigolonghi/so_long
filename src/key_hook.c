@@ -18,7 +18,9 @@ void static	go_right(t_game *game)
 	{
 		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
 		insert_image(game, game->player_pos.x, game->player_pos.y + 1, 'P');
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = '0';
 		game->player_pos.y++;
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = 'P';
 		game->steps++;
 		printf("%d\n", game->steps);
 	}
@@ -30,7 +32,9 @@ void static	go_left(t_game *game)
 	{
 		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
 		insert_image(game, game->player_pos.x, game->player_pos.y - 1, 'P');
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = '0';
 		game->player_pos.y--;
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = 'P';
 		game->steps++;
 		printf("%d\n", game->steps);
 	}
@@ -42,7 +46,9 @@ void static	go_down(t_game *game)
 	{
 		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
 		insert_image(game, game->player_pos.x + 1, game->player_pos.y, 'P');
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = '0';
 		game->player_pos.x++;
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = 'P';
 		game->steps++;
 		printf("%d\n", game->steps);
 	}
@@ -54,7 +60,9 @@ void static	go_up(t_game *game)
 	{
 		insert_image(game, game->player_pos.x, game->player_pos.y, '0');
 		insert_image(game, game->player_pos.x - 1, game->player_pos.y, 'P');
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = '0';
 		game->player_pos.x--;
+		game->map.coordinates[game->player_pos.x][game->player_pos.y] = 'P';
 		game->steps++;
 		printf("%d\n", game->steps);
 	}
