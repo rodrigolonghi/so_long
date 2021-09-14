@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 03:01:55 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/11 02:27:45 by rfelipe-         ###   ########.fr       */
+/*   Created: 2021/09/14 01:23:59 by rfelipe-          #+#    #+#             */
+/*   Updated: 2021/09/14 01:31:32 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	main(int argc, char *argv[])
 {
 	t_game	game;
 
-	start_game(&game, argc, argv);
+	start_game_bonus(&game, argc, argv);
+	return (0);
 }

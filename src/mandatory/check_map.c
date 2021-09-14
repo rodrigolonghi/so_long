@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 18:32:28 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 01:35:38 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void static	check_map_characters(t_game *game, int *characters)
 	free(rows_n_cols);
 }
 
-void static	check_map_walls(t_game *game, char *map)
+void	check_map_walls(t_game *game, char *map)
 {
 	int		fd;
 	int		rows;
@@ -77,7 +77,7 @@ void static	check_map_walls(t_game *game, char *map)
 	close(fd);
 }
 
-void static	count_map_size(t_game *game, char *map)
+void	count_map_size(t_game *game, char *map)
 {
 	int		fd;
 	char	*aux;

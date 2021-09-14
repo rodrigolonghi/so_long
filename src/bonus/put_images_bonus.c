@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_images.c                                       :+:      :+:    :+:   */
+/*   put_images_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 05:30:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 18:33:55 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/14 02:55:16 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
-void	insert_image(t_game *game, int rows, int cols, char img_code)
+void	insert_image_bonus(t_game *game, int rows, int cols, char img_code)
 {
 	if (img_code == '0')
 		mlx_put_image_to_window(game->mlx, game->win,
@@ -29,11 +29,14 @@ void	insert_image(t_game *game, int rows, int cols, char img_code)
 	else if (img_code == 'P')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->player.img, 50 * cols, 50 * rows);
+	else if (img_code == 'O')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->opponent.img, 50 * cols, 50 * rows);
 	else
-		throw_error("Invalid character provided");
+		throw_error_bonus("Invalid character provided");
 }
 
-int	put_images(t_game *game)
+int	put_images_bonus(t_game *game)
 {
 	int	rows;
 	int	cols;
@@ -44,7 +47,8 @@ int	put_images(t_game *game)
 		cols = 0;
 		while (cols < game->map.cols)
 		{
-			insert_image(game, rows, cols, game->map.coordinates[rows][cols]);
+			insert_image_bonus(game, rows, cols,
+				game->map.coordinates[rows][cols]);
 			cols++;
 		}
 		rows++;

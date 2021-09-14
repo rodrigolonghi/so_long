@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 00:54:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:37:18 by rfelipe-         ###   ########.fr       */
+/*   Created: 2021/09/14 01:25:21 by rfelipe-          #+#    #+#             */
+/*   Updated: 2021/09/14 02:39:27 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -60,23 +60,24 @@ typedef struct s_game
 	t_sprite	wall;
 	t_sprite	empty;
 	t_sprite	exit;
+	t_sprite	opponent;
 	t_map		map;
 	t_pos		player_pos;
 	int			to_collect;
 	int			steps;
 }	t_game;
 
-void	load_image(t_game *game);
-void	start_game(t_game *game, int argc, char *argv[]);
-void	throw_error(char *e);
-void	check_params(int argc, char *argv[]);
-void	check_map(t_game *game, char *map);
-int		put_images(t_game *game);
-int		key_hook(int key, void *param);
-void	insert_image(t_game *game, int rows, int cols, char img_code);
-int		close_game(t_game *game);
-int		check_movement(t_game *game, int x, int y);
-void	count_map_size(t_game *game, char *map);
-void	check_map_walls(t_game *game, char *map);
+void	start_game_bonus(t_game *game, int argc, char *argv[]);
+void	check_map_bonus(t_game *game, char *map);
+int		put_images_bonus(t_game *game);
+void	load_image_bonus(t_game *game);
+void	throw_error_bonus(char *e);
+void	check_params_bonus(int argc, char *argv[]);
+int		key_hook_bonus(int key, void *param);
+void	insert_image_bonus(t_game *game, int rows, int cols, char img_code);
+int		close_game_bonus(t_game *game);
+int		check_movement_bonus(t_game *game, int x, int y);
+void	count_map_size_bonus(t_game *game, char *map);
+void	check_map_walls_bonus(t_game *game, char *map);
 
 #endif
