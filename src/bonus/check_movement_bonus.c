@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:40:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:40:11 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:19:55 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void static	end(char *msg)
+static void	end(char *msg)
 {
 	printf("%s\n", msg);
 	exit(0);

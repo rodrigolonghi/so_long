@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:59:05 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 18:47:04 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:24:24 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	start_win(t_game *game)
+static void	start_win(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->map.cols * 50,

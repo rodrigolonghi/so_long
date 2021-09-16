@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:40:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:35:01 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:13 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	end(char *msg)
+static void	end(char *msg)
 {
 	printf("%s\n", msg);
 	exit(0);

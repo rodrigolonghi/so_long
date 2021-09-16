@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 02:26:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:26:22 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:28 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	free_game(t_game *game)
+static void	free_game(t_game *game)
 {
 	int	i;
 

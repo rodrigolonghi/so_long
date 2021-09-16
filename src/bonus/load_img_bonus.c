@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:51:42 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/16 00:09:18 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:21:39 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void static	load_walk_animation2(t_game *g)
+static void	load_walk_animation2(t_game *g)
 {
 	g->playerRun2.img = mlx_xpm_file_to_image(g->mlx,
 			"img/character/run2.xpm", &g->playerRun2.width,
@@ -34,7 +34,7 @@ void static	load_walk_animation2(t_game *g)
 			&g->steps_counter.endian);
 }
 
-void static	load_walk_animation(t_game *g)
+static void	load_walk_animation(t_game *g)
 {
 	g->playerLeft.img = mlx_xpm_file_to_image(g->mlx,
 			"img/character/idleLeft.xpm", &g->playerLeft.width,

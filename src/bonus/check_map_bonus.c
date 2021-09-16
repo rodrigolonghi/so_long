@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:36:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/16 00:13:59 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:40:29 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void static	check_map_characters_bonus2(char *aux, int *rows_n_cols,
+static void	check_map_characters_bonus2(char *aux, int *rows_n_cols,
 	int *characters, t_game *game)
 {
 	if (aux[rows_n_cols[1]] == '0')
@@ -27,15 +27,15 @@ void static	check_map_characters_bonus2(char *aux, int *rows_n_cols,
 	{
 		game->player_pos.x = rows_n_cols[0];
 		game->player_pos.y = rows_n_cols[1];
-		characters[5]++;
+		characters[4]++;
 	}
 	else if (aux[rows_n_cols[1]] == 'O')
-		characters[4]++;
+		characters[5]++;
 	else if (aux[rows_n_cols[1]] != 'S')
 		throw_error_bonus("Invalid character on map");
 }
 
-void static	check_map_characters_bonus(t_game *game, int *characters)
+static void	check_map_characters_bonus(t_game *game, int *characters)
 {
 	int		*rows_n_cols;
 
@@ -118,10 +118,10 @@ void	check_map_bonus(t_game *game, char *map)
 	game->map.coordinates = malloc(sizeof(char *) * game->map.rows);
 	check_map_walls_bonus(game, map);
 	check_map_characters_bonus(game, characters);
-	if (ft_haszero(characters, 5) == 1)
+	if (ft_haszero(characters, 4) == 1)
 		throw_error_bonus(ft_strjoin("Map must have at least one exit, one",
-				" collectible, one opponent and one starting position."));
-	if (characters[5] != 1)
+				" collectible and one starting position."));
+	if (characters[4] != 1)
 		throw_error_bonus("You need to put exactly one player on the map");
 	game->to_collect = characters[2];
 	free(characters);

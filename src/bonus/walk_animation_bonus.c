@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 03:01:22 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 04:20:22 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:22:20 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void static	walk_animation_bonus2(t_game *g, int x, int y, char direction)
+static void	walk_animation_bonus2(t_game *g, int x, int y, char direction)
 {
 	if (g->steps % 2 == 0)
 	{

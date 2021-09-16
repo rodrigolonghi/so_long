@@ -6,17 +6,17 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/14 04:23:39 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/16 19:25:37 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = clang
+CC = gcc
 FLAGS = -g -Wall -Wextra -Werror
 FLAGS_TESTE = -g -Wall -Wextra
 MLX_FLAGS = -lmlx -lXext -lX11
-
+#-g3 -fsanitize=address -Wall -Werror -Wextra
 LIBFT_DIR = ./libft
 LIBFT = libft/libft.a
 
@@ -93,6 +93,6 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(LIBFT) $(MLX) $(BONUS_OBJ)
+bonus: fclean $(LIBFT) $(MLX) $(BONUS_OBJ)
 	mkdir -p $(APP_DIR)
 	$(CC) -lm $(BONUS_OBJ) $(LIBFT) -L$(MLX_DIR) $(MLX_FLAGS) -o app/$(NAME)

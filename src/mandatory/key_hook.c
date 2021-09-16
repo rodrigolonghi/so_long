@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 00:57:16 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/13 17:58:44 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:48 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	go_right(t_game *game)
+static void	go_right(t_game *game)
 {
 	if (check_movement(game, 0, 1))
 	{
@@ -26,7 +26,7 @@ void static	go_right(t_game *game)
 	}
 }
 
-void static	go_left(t_game *game)
+static void	go_left(t_game *game)
 {
 	if (check_movement(game, 0, -1))
 	{
@@ -40,7 +40,7 @@ void static	go_left(t_game *game)
 	}
 }
 
-void static	go_down(t_game *game)
+static void	go_down(t_game *game)
 {
 	if (check_movement(game, 1, 0))
 	{
@@ -54,7 +54,7 @@ void static	go_down(t_game *game)
 	}
 }
 
-void static	go_up(t_game *game)
+static void	go_up(t_game *game)
 {
 	if (check_movement(game, -1, 0))
 	{

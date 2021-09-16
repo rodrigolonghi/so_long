@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 02:53:54 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 01:35:38 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:22:42 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void static	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
+static void	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
 	t_game *game)
 {
 	if (aux[rows_n_cols[1]] == '0')
@@ -33,7 +33,7 @@ void static	check_map_characters2(char *aux, int *rows_n_cols, int *characters,
 		throw_error("Invalid character on map");
 }
 
-void static	check_map_characters(t_game *game, int *characters)
+static void	check_map_characters(t_game *game, int *characters)
 {
 	int		*rows_n_cols;
 

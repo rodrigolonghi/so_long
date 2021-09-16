@@ -6,13 +6,13 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 02:26:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:43:27 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:20:17 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void static	free_game_bonus(t_game *game)
+static void	free_game_bonus(t_game *game)
 {
 	int	i;
 
