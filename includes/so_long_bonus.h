@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:25:21 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 03:47:10 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:07:26 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_game
 	t_sprite	empty;
 	t_sprite	exit;
 	t_sprite	opponent;
+	t_sprite	steps_counter;
 	t_map		map;
 	t_pos		player_pos;
 	int			to_collect;

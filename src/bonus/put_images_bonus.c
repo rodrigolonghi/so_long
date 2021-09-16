@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 05:30:10 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:55:16 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:12:00 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	insert_image_bonus(t_game *game, int rows, int cols, char img_code)
 	else if (img_code == 'O')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->opponent.img, 50 * cols, 50 * rows);
+	else if (img_code == 'S')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->steps_counter.img, 50 * cols, 50 * rows);
 	else
 		throw_error_bonus("Invalid character provided");
 }

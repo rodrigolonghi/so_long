@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 00:57:16 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 04:15:04 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:23:12 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void static	go_right(t_game *g)
 		g->player_pos.y++;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
 		g->steps++;
-		printf("%d\n", g->steps);
+		insert_image_bonus(g, 0, 0, 'S');
+		mlx_string_put(g->mlx, g->win, 20, 30, 0xFFFFFF, ft_itoa(g->steps));
 	}
 }
 
@@ -36,7 +37,8 @@ void static	go_left(t_game *g)
 		g->player_pos.y--;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
 		g->steps++;
-		printf("%d\n", g->steps);
+		insert_image_bonus(g, 0, 0, 'S');
+		mlx_string_put(g->mlx, g->win, 20, 30, 0xFFFFFF, ft_itoa(g->steps));
 	}
 }
 
@@ -50,7 +52,8 @@ void static	go_down(t_game *g)
 		g->player_pos.x++;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
 		g->steps++;
-		printf("%d\n", g->steps);
+		insert_image_bonus(g, 0, 0, 'S');
+		mlx_string_put(g->mlx, g->win, 20, 30, 0xFFFFFF, ft_itoa(g->steps));
 	}
 }
 
@@ -64,7 +67,8 @@ void static	go_up(t_game *g)
 		g->player_pos.x--;
 		g->map.coordinates[g->player_pos.x][g->player_pos.y] = 'P';
 		g->steps++;
-		printf("%d\n", g->steps);
+		insert_image_bonus(g, 0, 0, 'S');
+		mlx_string_put(g->mlx, g->win, 20, 30, 0xFFFFFF, ft_itoa(g->steps));
 	}
 }
 

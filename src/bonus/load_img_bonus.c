@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 23:51:42 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 03:35:06 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:09:18 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ void static	load_walk_animation2(t_game *g)
 	g->playerRun2Left.addr = mlx_get_data_addr(g->playerRun2Left.img,
 			&g->playerRun2Left.bpp, &g->playerRun2Left.line_length,
 			&g->playerRun2Left.endian);
+	g->steps_counter.img = mlx_xpm_file_to_image(g->mlx,
+			"img/wall/steps_counter.xpm", &g->steps_counter.width,
+			&g->steps_counter.height);
+	g->steps_counter.addr = mlx_get_data_addr(g->steps_counter.img,
+			&g->steps_counter.bpp, &g->steps_counter.line_length,
+			&g->steps_counter.endian);
 }
 
 void static	load_walk_animation(t_game *g)

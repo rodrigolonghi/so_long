@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:36:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2021/09/14 02:54:39 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:13:59 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void static	check_map_characters_bonus2(char *aux, int *rows_n_cols,
 	}
 	else if (aux[rows_n_cols[1]] == 'O')
 		characters[4]++;
-	else
+	else if (aux[rows_n_cols[1]] != 'S')
 		throw_error_bonus("Invalid character on map");
 }
 
@@ -77,6 +77,7 @@ void	check_map_walls_bonus(t_game *game, char *map)
 		rows++;
 	}
 	close(fd);
+	game->map.coordinates[0][0] = 'S';
 }
 
 void	count_map_size_bonus(t_game *game, char *map)
