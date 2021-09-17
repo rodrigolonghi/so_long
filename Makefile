@@ -6,17 +6,16 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/05 18:12:25 by rfelipe-          #+#    #+#              #
-#    Updated: 2021/09/16 19:25:37 by rfelipe-         ###   ########.fr        #
+#    Updated: 2021/09/16 21:30:13 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = gcc
-FLAGS = -g -Wall -Wextra -Werror
-FLAGS_TESTE = -g -Wall -Wextra
+CC = clang
+FLAGS = -g -fsanitize=leak -Wall -Wextra -Werror
 MLX_FLAGS = -lmlx -lXext -lX11
-#-g3 -fsanitize=address -Wall -Werror -Wextra
+
 LIBFT_DIR = ./libft
 LIBFT = libft/libft.a
 
@@ -68,7 +67,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	mkdir -p $(OBJ_DIR)
-	$(CC) -c $(FLAGS_TESTE) -I$(INCLUDE_DIR) -o $@ $<
+	$(CC) -c $(FLAGS) -I$(INCLUDE_DIR) -o $@ $<
 
 $(BONUS_OBJ_DIR)/%.o: $(BONUS_SRC_DIR)/%.c $(BONUS_INCLUDE)
 	mkdir -p $(BONUS_OBJ_DIR)
